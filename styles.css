@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: "Segoe UI";
+  display: flex;
+  flex-direction: row;
+  background-color: #f8f8f8;
+}
+
+#left-container {
+  width: 200px;
+  height: 120px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, 1),
+    8px 8px 8px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#generate-button {
+  width: 150px;
+  height: 40px;
+  background: linear-gradient(90deg, #00bbff, #008ffc);
+  border-radius: 20px;
+  box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, 1),
+    8px 8px 8px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#generate-button:hover {
+  background: linear-gradient(90deg, #008cff, #0217db);
+}
+
+#percentage-text {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+#right-container {
+  margin-left: 30px;
+  padding: 20px;
+  width: 500px;
+  height: 120px;
+  display: flex;
+  box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, 1),
+    8px 8px 8px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+#thermometer {
+  margin-top: 50px;
+  width: 470px;
+  height: 20px;
+  background: linear-gradient(90deg, #ff004c, #ffe600, #09db02);
+  border-radius: 10px;
+}
+
+#indicator-dot {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 100px;
+  position: relative;
+  top: -29px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  transform: translateX(calc(var(--x) * 4.5px));
+  transition: 0.5s;
+}
+
+#indicator-text {
+  position: relative;
+  margin-left: -3px;
+  top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  transform: translateX(calc(var(--x) * 4.5px));
+  color: var(--color);
+  opacity: 0;
+}
+
+.indicator-text-anim {
+  animation: pop-up 0.5s 0.25s forwards;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: translate(calc(var(--x) * 4.5px), 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(calc(var(--x) * 4.5px), -30px);
+    opacity: 1;
+  }
+}
