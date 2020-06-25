@@ -10,11 +10,10 @@
 
 <body>
     <div id="left-container">
-        <div id="generate-button" onclick="generatePercent()">Generate
+        <div id="generate-button" onclick="generatePercentClicked()">Generate
             Percent!</div>
         <script>
-            function generatePercent() {
-
+            function generatePercentClicked() {
                 // Generate random number 1-100 and set the cooresponding UI element's values
                 const percentage = Math.floor(Math.random() * 101)
                 document.getElementById("percentage-text").innerText = percentage + "%"
@@ -44,6 +43,13 @@
                     blue: 2
                 }
                 document.getElementById("indicator-text").style.setProperty("--color", colorGradient(percentage / 100, redRGB, yellowRGB, greenRGB))
+
+                // Play a good/neutral/bad sound effect
+                    percentage < 30 ? 
+                        new Audio("../assets/fail.mp3").play() :
+                    percentage < 70 ?
+                        new Audio("../assets/pop.mp3").play() :
+                        new Audio("../assets/success.mp3").play()
             }
 
             function colorGradient(fadeFraction, rgbColor1, rgbColor2, rgbColor3) {
@@ -74,10 +80,12 @@
                 return 'rgb(' + gradient.red + ',' + gradient.green + ',' + gradient.blue + ')';
             }
         </script>
-        <strong id="percentage-text">0%<strong>
+        <div id="percentage-container">
+            <strong id="percentage-text">0%<strong>
+        </div>
     </div>
     <div id="right-container">
-        <strong>Result</strong>
+        <strong id="result-text">Result</strong>
         <div id="thermometer">
             <div id="indicator-text">90%</div>
             <div id="indicator-dot"></div>
